@@ -65,7 +65,7 @@ JWT_SECRET=your_jwt_secret_key_here
 
 ### 3. Frontend Setup
 ```bash
-cd auto-serve-hub
+cd frontend
 npm install
 ```
 
@@ -87,7 +87,7 @@ Backend will run on `http://localhost:5000`
 
 ### Start Frontend Development Server
 ```bash
-cd auto-serve-hub
+cd frontend
 npm run dev
 ```
 Frontend will run on `http://localhost:5173`
@@ -110,7 +110,7 @@ auto_serve/
 │   ├── config/           # Configuration files
 │   └── server.js         # Entry point
 │
-├── auto-serve-hub/
+├── frontend/
 │   ├── src/
 │   │   ├── components/   # Reusable UI components
 │   │   ├── pages/        # Page components

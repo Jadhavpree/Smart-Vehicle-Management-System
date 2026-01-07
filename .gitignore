@@ -36,10 +36,10 @@ Thumbs.db
 .cache/
 
 # Frontend specific
-auto-serve-hub/dist/
-auto-serve-hub/node_modules/
-auto-serve-hub/.vite/
-auto-serve-hub/bun.lockb
+frontend/dist/
+frontend/node_modules/
+frontend/.vite/
+frontend/bun.lockb
 
 # Backend specific
 backend/node_modules/

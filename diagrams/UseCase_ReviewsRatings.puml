@@ -1,0 +1,47 @@
+@startuml UseCase_ReviewsRatings
+!theme plain
+skinparam usecase {
+    BackgroundColor #E8F4F8
+    BorderColor #2C3E50
+}
+skinparam actor {
+    BackgroundColor #FFE5B4
+    BorderColor #2C3E50
+}
+
+title Use Case Diagram: Reviews & Ratings Module
+
+actor Customer as Customer #FFE5B4
+actor "Service Center" as ServiceCenter #B4E5FF
+actor Admin as Admin #FFB4B4
+
+rectangle "Reviews & Ratings System" {
+    usecase UC1_SubmitReview as "UC-7.1\nSubmit Review & Rating"
+    usecase UC2_ViewMyReviews as "UC-7.2\nView My Reviews"
+    usecase UC3_ViewAllReviews as "UC-7.3\nView All Reviews"
+    usecase UC4_ViewServiceCenterReviews as "UC-7.4\nView Service Center Reviews"
+    usecase UC5_UpdateReview as "UC-7.5\nUpdate Review"
+    usecase UC6_DeleteReview as "UC-7.6\nDelete Review"
+    usecase UC7_ViewRatingStats as "UC-7.7\nView Rating Statistics"
+    usecase UC8_RespondToReview as "UC-7.8\nRespond to Review"
+}
+
+Customer --> UC1_SubmitReview
+Customer --> UC2_ViewMyReviews
+Customer --> UC5_UpdateReview
+Customer --> UC6_DeleteReview
+
+ServiceCenter --> UC4_ViewServiceCenterReviews
+ServiceCenter --> UC7_ViewRatingStats
+ServiceCenter --> UC8_RespondToReview
+
+Admin --> UC3_ViewAllReviews
+Admin --> UC7_ViewRatingStats
+Admin --> UC6_DeleteReview
+
+UC1_SubmitReview ..> UC2_ViewMyReviews : <<include>>
+UC1_SubmitReview ..> UC4_ViewServiceCenterReviews : <<include>>
+UC4_ViewServiceCenterReviews ..> UC7_ViewRatingStats : <<include>>
+
+@enduml
+

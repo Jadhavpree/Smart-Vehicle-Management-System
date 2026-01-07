@@ -1,0 +1,53 @@
+@startuml UseCase_InvoicePayment
+!theme plain
+skinparam usecase {
+    BackgroundColor #E8F4F8
+    BorderColor #2C3E50
+}
+skinparam actor {
+    BackgroundColor #FFE5B4
+    BorderColor #2C3E50
+}
+
+title Use Case Diagram: Invoice & Payment Module
+
+actor Customer as Customer #FFE5B4
+actor "Service Center" as ServiceCenter #B4E5FF
+actor Admin as Admin #FFB4B4
+actor "Payment Gateway" as PaymentGateway #E5FFB4
+
+rectangle "Invoice & Payment System" {
+    usecase UC1_GenerateInvoice as "UC-5.1\nGenerate Invoice"
+    usecase UC2_ViewInvoice as "UC-5.2\nView Invoice Details"
+    usecase UC3_ProcessPayment as "UC-5.3\nProcess Payment"
+    usecase UC4_ViewPaymentStatus as "UC-5.4\nView Payment Status"
+    usecase UC5_SendInvoiceEmail as "UC-5.5\nSend Invoice via Email"
+    usecase UC6_ViewAllInvoices as "UC-5.6\nView All Invoices"
+    usecase UC7_DownloadInvoice as "UC-5.7\nDownload Invoice PDF"
+    usecase UC8_ViewPaymentHistory as "UC-5.8\nView Payment History"
+}
+
+ServiceCenter --> UC1_GenerateInvoice
+ServiceCenter --> UC2_ViewInvoice
+ServiceCenter --> UC5_SendInvoiceEmail
+ServiceCenter --> UC6_ViewAllInvoices
+
+Customer --> UC2_ViewInvoice
+Customer --> UC3_ProcessPayment
+Customer --> UC4_ViewPaymentStatus
+Customer --> UC7_DownloadInvoice
+Customer --> UC8_ViewPaymentHistory
+
+Admin --> UC6_ViewAllInvoices
+Admin --> UC2_ViewInvoice
+Admin --> UC8_ViewPaymentHistory
+
+PaymentGateway --> UC3_ProcessPayment
+
+UC1_GenerateInvoice ..> UC2_ViewInvoice : <<include>>
+UC1_GenerateInvoice ..> UC5_SendInvoiceEmail : <<extend>>
+UC3_ProcessPayment ..> UC4_ViewPaymentStatus : <<include>>
+UC3_ProcessPayment ..> UC8_ViewPaymentHistory : <<include>>
+
+@enduml
+

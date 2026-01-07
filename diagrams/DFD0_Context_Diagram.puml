@@ -1,0 +1,65 @@
+@startuml DFD0_Context_Diagram
+!theme plain
+skinparam componentStyle rectangle
+skinparam defaultFontSize 12
+skinparam component {
+    BackgroundColor #E8F4F8
+    BorderColor #2C3E50
+    ArrowColor #34495E
+}
+
+title DFD0 - Context Diagram: AutoServe Management System
+
+package "External Entities" {
+    [Customer] as Customer #FFE5B4
+    [Service Center] as ServiceCenter #B4E5FF
+    [Admin] as Admin #FFB4B4
+    [Payment Gateway] as PaymentGateway #E5FFB4
+    [Email Service] as EmailService #FFB4E5
+    [SMS/WhatsApp Service] as NotificationService #B4FFE5
+}
+
+package "AutoServe Management System" {
+    [AutoServe System] as System #D4E5F7
+}
+
+' Customer interactions
+Customer --> System : Booking Request\nVehicle Information\nPayment Details\nReview & Rating
+System --> Customer : Booking Confirmation\nService Updates\nInvoice Details\nPayment Receipt\nStatus Notifications
+
+' Service Center interactions
+ServiceCenter --> System : Booking Approval/Rejection\nJob Card Creation\nLabor Task Updates\nParts Usage\nInvoice Generation\nInventory Management
+System --> ServiceCenter : Booking Requests\nCustomer Information\nVehicle Details\nPayment Status\nInventory Alerts
+
+' Admin interactions
+Admin --> System : User Management\nSystem Configuration\nStock Request Approval\nAnalytics Access\nReports Generation
+System --> Admin : System Statistics\nUser Reports\nPerformance Metrics\nInventory Reports
+
+' Payment Gateway interaction
+System --> PaymentGateway : Payment Processing Request
+PaymentGateway --> System : Payment Confirmation\nTransaction ID
+
+' Email Service interaction
+System --> EmailService : Email Notifications\nInvoice Emails
+EmailService --> System : Delivery Status
+
+' Notification Service interaction
+System --> NotificationService : SMS/WhatsApp Messages\nStatus Updates
+NotificationService --> System : Delivery Confirmation
+
+note right of System
+    **Core Functions:**
+    • User Management
+    • Vehicle Registration
+    • Service Booking
+    • Job Card Management
+    • Invoice & Payment
+    • Inventory Control
+    • Reviews & Ratings
+    • Digital Inspection
+    • Labor Tracking
+    • Notifications
+end note
+
+@enduml
+

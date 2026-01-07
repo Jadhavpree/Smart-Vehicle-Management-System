@@ -1,0 +1,44 @@
+@startuml UseCase_TeamManagement
+!theme plain
+skinparam usecase {
+    BackgroundColor #E8F4F8
+    BorderColor #2C3E50
+}
+skinparam actor {
+    BackgroundColor #FFE5B4
+    BorderColor #2C3E50
+}
+
+title Use Case Diagram: Team Management Module
+
+actor "Service Center" as ServiceCenter #B4E5FF
+actor Admin as Admin #FFB4B4
+
+rectangle "Team Management System" {
+    usecase UC1_AddTeamMember as "UC-12.1\nAdd Team Member"
+    usecase UC2_ViewTeamMembers as "UC-12.2\nView Team Members"
+    usecase UC3_UpdateTeamMember as "UC-12.3\nUpdate Team Member"
+    usecase UC4_RemoveTeamMember as "UC-12.4\nRemove Team Member"
+    usecase UC5_AssignRole as "UC-12.5\nAssign Role to Member"
+    usecase UC6_ViewMemberPerformance as "UC-12.6\nView Member Performance"
+    usecase UC7_ViewAllTeams as "UC-12.7\nView All Teams"
+}
+
+ServiceCenter --> UC1_AddTeamMember
+ServiceCenter --> UC2_ViewTeamMembers
+ServiceCenter --> UC3_UpdateTeamMember
+ServiceCenter --> UC4_RemoveTeamMember
+ServiceCenter --> UC5_AssignRole
+ServiceCenter --> UC6_ViewMemberPerformance
+
+Admin --> UC7_ViewAllTeams
+Admin --> UC2_ViewTeamMembers
+Admin --> UC6_ViewMemberPerformance
+
+UC1_AddTeamMember ..> UC2_ViewTeamMembers : <<include>>
+UC3_UpdateTeamMember ..> UC2_ViewTeamMembers : <<include>>
+UC5_AssignRole ..> UC2_ViewTeamMembers : <<include>>
+UC6_ViewMemberPerformance ..> UC2_ViewTeamMembers : <<include>>
+
+@enduml
+

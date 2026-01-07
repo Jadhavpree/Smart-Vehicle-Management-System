@@ -1,0 +1,52 @@
+@startuml UseCase_UserManagement
+!theme plain
+skinparam usecase {
+    BackgroundColor #E8F4F8
+    BorderColor #2C3E50
+}
+skinparam actor {
+    BackgroundColor #FFE5B4
+    BorderColor #2C3E50
+}
+
+title Use Case Diagram: User Management Module
+
+actor Customer as Customer #FFE5B4
+actor "Service Center" as ServiceCenter #B4E5FF
+actor Admin as Admin #FFB4B4
+
+rectangle "User Management System" {
+    usecase UC1_Register as "UC-1.1\nRegister Account"
+    usecase UC2_Login as "UC-1.2\nLogin to System"
+    usecase UC3_UpdateProfile as "UC-1.3\nUpdate Profile"
+    usecase UC4_ChangePassword as "UC-1.4\nChange Password"
+    usecase UC5_ViewProfile as "UC-1.5\nView Profile"
+    usecase UC6_ManageUsers as "UC-1.6\nManage All Users"
+    usecase UC7_ResetPassword as "UC-1.7\nReset Password"
+    usecase UC8_ViewUserStats as "UC-1.8\nView User Statistics"
+}
+
+Customer --> UC1_Register
+Customer --> UC2_Login
+Customer --> UC3_UpdateProfile
+Customer --> UC4_ChangePassword
+Customer --> UC5_ViewProfile
+Customer --> UC7_ResetPassword
+
+ServiceCenter --> UC1_Register
+ServiceCenter --> UC2_Login
+ServiceCenter --> UC3_UpdateProfile
+ServiceCenter --> UC4_ChangePassword
+ServiceCenter --> UC5_ViewProfile
+
+Admin --> UC2_Login
+Admin --> UC3_UpdateProfile
+Admin --> UC6_ManageUsers
+Admin --> UC8_ViewUserStats
+
+UC2_Login ..> UC5_ViewProfile : <<include>>
+UC3_UpdateProfile ..> UC5_ViewProfile : <<include>>
+UC6_ManageUsers ..> UC8_ViewUserStats : <<include>>
+
+@enduml
+

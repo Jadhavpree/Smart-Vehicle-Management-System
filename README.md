@@ -110,16 +110,14 @@ auto_serve/
 │   ├── config/           # Configuration files
 │   └── server.js         # Entry point
 │
-├── frontend/
-│   ├── src/
-│   │   ├── components/   # Reusable UI components
-│   │   ├── pages/        # Page components
-│   │   ├── lib/          # API client & utilities
-│   │   ├── hooks/        # Custom React hooks
-│   │   └── App.tsx       # Main app component
-│   └── public/           # Static assets
-│
-└── diagrams/             # System architecture diagrams
+└── frontend/
+    ├── src/
+    │   ├── components/   # Reusable UI components
+    │   ├── pages/        # Page components
+    │   ├── lib/          # API client & utilities
+    │   ├── hooks/        # Custom React hooks
+    │   └── App.tsx       # Main app component
+    └── public/           # Static assets
 ```
 
 ## 🔑 Key API Endpoints
